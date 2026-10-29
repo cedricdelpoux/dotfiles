@@ -1,0 +1,57 @@
+[alias]
+  b = branch -a
+  ci = commit
+  co = checkout
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  pfl = push --force-with-lease
+  r = remote -v
+  rmb = "!git for-each-ref --format=\"%(if)%(worktreepath)%(then)%(else)%(refname:short)%(end)\" --merged HEAD refs/heads | grep -v \"^$\\|^master$\" | xargs -n 1 git branch -d; git for-each-ref --format=\"%(if)%(worktreepath)%(then)%(else)%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)%(end)\" refs/heads | grep -v \"^$\" | xargs -n 1 git branch -D"
+  s = status -s
+  cpb = git branch --show-current | pbcopy
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+
+[core]
+  autocrlf = input
+  excludesfile = ~/.gitexcludes
+  ignorecase = false
+  editor = code --wait
+
+[pull]
+  rebase = true
+
+[user]
+  name = Cédric Delpoux
+
+[credential]
+  helper = osxkeychain
+
+[diff]
+  submodule = log
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = ssh
+
+[sequence]
+  editor = code --wait
+
+[rebase]
+  updateRefs = true
+
+[blame]
+  ignorerevsfile = .git-blame-ignore-revs
+
+[push]
+  default = current
+  forceWithLease = true
+
+# Identity and credential helpers come from the overlay: keep the include last so it wins
+[include]
+  path = ~/.gitconfig.local
