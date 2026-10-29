@@ -1,0 +1,25 @@
+# macOS
+._*
+.Trashes
+.DS_Store
+.LSOverride
+.Spotlight-V100
+.vscode
+.nova
+.yalc
+yalc.lock
+
+# AI tools
+.augment
+.claude
+.playwright-mcp
+.playwright_mcp
+.mcp.json
+
+# Git hooks that should not be versioned
+.githooks/prepare-commit-msg
+.auth.json
+.playwright-profile
+
+# Worktree skill hook
+__dorian
