@@ -86,13 +86,16 @@ to clean up:
 1. **Scope**: by default what the change adds. `git diff <base>...HEAD -U0` (`main` or `master`) plus
    `git diff -U0` for uncommitted work, new files in full. Moved code counts: moving a block is the
    moment to trim it.
-2. **Review every comment** added or modified with the table, and **every name** added or renamed with
+2. **Simplify first**, on the final diff or an explicit cleanup request (not while writing): run the
+   built-in `simplify` skill on the same scope, so the structure (reuse, duplication, needless work)
+   is settled before the names and comments are. Its renames still go through the rules below.
+3. **Review every comment** added or modified with the table, and **every name** added or renamed with
    the names rules. On an explicit cleanup request, list the decisions as a table (line → decision →
    why) before editing, so the user can object to one of them. Otherwise fix what fails before handing
    over rather than asking the user to review it.
-3. **Apply** without changing behaviour. A rename covers every occurrence: declarations, listeners,
+4. **Apply** without changing behaviour. A rename covers every occurrence: declarations, listeners,
    templates, tests, comments (`grep` the old name afterwards).
-4. **Verify**: the project's formatter, linter and type-checker on the touched files, then the tests of
+5. **Verify**: the project's formatter, linter and type-checker on the touched files, then the tests of
    the touched module, with the commands its CLAUDE.md or check skill gives.
 
 ## Pitfalls
