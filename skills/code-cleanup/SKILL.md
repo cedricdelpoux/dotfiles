@@ -1,5 +1,5 @@
 ---
-name: kis
+name: code-cleanup
 description: Keep it simple. Write self-explanatory code with short explicit names and almost no comments, and trim the comments and homogenise the names (functions, booleans, events, callbacks, props, slots) a branch or a working tree adds. Use every time you develop a feature, fix a bug or refactor, before writing code and again on the final diff, and when asked to clean up, lighten, simplify or homogenise code ("kis", "nettoie", "allège les commentaires", "enlève les commentaires inutiles", "homogénéise les emits / les noms", "trop d'incohérences").
 ---
 
@@ -11,7 +11,7 @@ One line, and expect it to be challenged.
 
 This skill is framework-agnostic. The project's own rules win over its defaults: before deciding
 anything, load the project's conventions skills when they exist (`code-comments`, `*-conventions`,
-a `kis-<project>` companion such as `kis-shipfix`) and read its CLAUDE.md.
+a `code-cleanup-<project>` companion such as `code-cleanup-shipfix`) and read its CLAUDE.md.
 
 ## Names
 

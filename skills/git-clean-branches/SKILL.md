@@ -1,5 +1,6 @@
 ---
-name: clean-branches
+name: git-clean-branches
+user-invocable: false
 description: Review every local git branch and worktree, then delete the finished ones behind an archive tag. Use when asked for "un état des lieux des branches", to clean up, prune or tidy local branches or worktrees.
 ---
 
@@ -32,4 +33,4 @@ Delete nothing at this step.
 4. Never touch remote branches or existing tags. Report what remains and how to restore a branch:
    `git branch <b> archive/<b>`.
 
-Then offer `/archive-sessions` for the sessions of those branches.
+Then offer `/claude-archive-sessions` for the sessions of those branches.

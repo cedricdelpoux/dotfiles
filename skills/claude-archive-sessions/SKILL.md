@@ -1,11 +1,12 @@
 ---
-name: archive-sessions
+name: claude-archive-sessions
+user-invocable: false
 description: Archive the Claude Code sessions of the VS Code sidebar whose work is merged and has nothing pending. Use when asked to "archive les sessions", tidy the session list, or after cleaning up branches.
 ---
 
 # Archive finished sessions
 
-`python3 -I ~/.claude/skills/archive-sessions/sessions.py list [repo]` prints each session the
+`python3 -I ~/.claude/skills/claude-archive-sessions/sessions.py list [repo]` prints each session the
 extension still shows: its branches (the last one is where it ended), title and last reply.
 
 Classify each session, then show the table (session, branch, MR state, verdict) and wait for an ok:
