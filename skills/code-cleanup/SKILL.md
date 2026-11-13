@@ -78,6 +78,24 @@ Decide each comment in scope, in this order, and stop at the first that applies:
 What a surviving comment may say (present tense, no ticket tags, no change narration) follows the
 project's `code-comments` skill when one exists.
 
+### Type annotations
+
+The JSDoc tags a type-checker reads (`@param`, `@returns`, `@type`, `@typedef`, `@property`) are
+code, not comments: they generate the `.d.ts` files and the editor hints. Judge each one by the type
+it changes, not with the table above.
+
+- **Keep** a tag without which the type would be `any` or wrong: a parameter (always `any` without
+  one), a return the checker cannot infer (a `JSON.parse`, an object with computed keys), a field
+  initialised to `null` or `[]` whose type the API exposes, a `@typedef` the API exports.
+- **Delete** a tag the checker already infers: the `@returns` of a function that returns a typed call,
+  a literal or a template string, a `@type` that restates its initialiser.
+- **Check, do not guess**: generate the declarations with and without the tag (`tsc` with
+  `declaration` and `emitDeclarationOnly`) and compare them. If they are the same, delete the tag.
+- Type the public API only. When the project type-checks without `strict`, do not annotate internal
+  parameters just to silence the checker.
+- The text of a tag follows the comment rules: a `@property` or `@param` description only when the
+  name does not say it (a default, a unit, a constraint).
+
 ## Workflow
 
 When writing code, apply the names and comments rules as you go. Before handing over, or when asked
@@ -89,8 +107,8 @@ to clean up:
 2. **Simplify first**, on the final diff or an explicit cleanup request (not while writing): run the
    built-in `simplify` skill on the same scope, so the structure (reuse, duplication, needless work)
    is settled before the names and comments are. Its renames still go through the rules below.
-3. **Review every comment** added or modified with the table, and **every name** added or renamed with
-   the names rules. On an explicit cleanup request, list the decisions as a table (line → decision →
+3. **Review every comment** added or modified with the table, **every type annotation** with its
+   rules, and **every name** added or renamed with the names rules. On an explicit cleanup request, list the decisions as a table (line → decision →
    why) before editing, so the user can object to one of them. Otherwise fix what fails before handing
    over rather than asking the user to review it.
 4. **Apply** without changing behaviour. A rename covers every occurrence: declarations, listeners,
