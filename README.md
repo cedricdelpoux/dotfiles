@@ -15,8 +15,12 @@ git clone git@github.com:cedricdelpoux/dotfiles-<machine> ~/Code/dotfiles-<machi
 ~/Code/dotfiles-<machine>/install.sh
 ```
 
-`DOTFILES_LINKS_ONLY=1 <overlay>/install.sh` refreshes the symlinks (dotfiles, Claude skills) without
-the Homebrew and macOS setup, e.g. after a `git pull`.
+After a `git pull` of this repo or the overlay, refresh the symlinks (dotfiles, Claude skills, Claude
+scripts, VS Code extension) without the Homebrew and macOS setup:
+
+```
+DOTFILES_LINKS_ONLY=1 ~/Code/dotfiles-<machine>/install.sh
+```
 
 ## Writing an overlay
 
@@ -31,4 +35,7 @@ the Homebrew and macOS setup, e.g. after a `git pull`.
 `claude/bin/vscode-browser <file or URL>` opens a page in the VS Code integrated browser and reuses
 the tab already on it. It goes through `vscode/browser-open`, a local extension whose URI handler
 runs `workbench.action.browser.open`. A local file must be inside a trusted workspace folder.
+After the symlinks are created, run Developer: Reload Window in VS Code so it loads the extension.
+If the command opens nothing, the extension is not loaded: check
+`~/.vscode/extensions/local.browser-open-0.0.1`, then reload the window.
 
