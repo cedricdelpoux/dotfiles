@@ -25,3 +25,10 @@ the Homebrew and macOS setup, e.g. after a `git pull`.
 - `~/.zshrc.local`, `~/.bash_profile.local` and `~/.gitconfig.local` are sourced/included when
   present: the overlay symlinks its own versions there (git identity goes in `.gitconfig.local`).
 - Claude skills: `skills/<name>/SKILL.md` here and in the overlay are symlinked into `~/.claude/skills/`.
+
+## VS Code integrated browser
+
+`claude/bin/vscode-browser <file or URL>` opens a page in the VS Code integrated browser and reuses
+the tab already on it. It goes through `vscode/browser-open`, a local extension whose URI handler
+runs `workbench.action.browser.open`. A local file must be inside a trusted workspace folder.
+

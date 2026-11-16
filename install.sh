@@ -43,6 +43,9 @@ symlink "shell/.bash_profile" ".bash_profile"
 symlink "shell/.inputrc" ".inputrc"
 symlink "shell/.zshrc" ".zshrc"
 symlink_skills "$ROOT/skills"
+mkdir -p "$HOME/.claude/bin" "$HOME/.vscode/extensions"
+symlink "claude/bin/vscode-browser" ".claude/bin/vscode-browser"
+symlink "vscode/browser-open" ".vscode/extensions/local.browser-open-0.0.1"
 
 # Overlay: a sibling repo adding its own packages, *.local files and skills
 if [ -n "$DOTFILES_OVERLAY" ]; then

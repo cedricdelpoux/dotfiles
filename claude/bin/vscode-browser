@@ -1,0 +1,8 @@
+#!/bin/sh
+# Opens a URL or a local file in the VS Code integrated browser, reusing the tab already on it
+target="$1"
+case "$target" in
+  http://* | https://*) url="$target" ;;
+  *) url="file://$(cd "$(dirname "$target")" && pwd)/$(basename "$target")" ;;
+esac
+open "vscode://local.browser-open/open?url=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$url")"
